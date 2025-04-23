@@ -88,6 +88,25 @@ namespace TimeZone
             return TZs;
         }
 
+
+         /// <summary>
+        /// Instantiates a TimeZoneInfo object that represents the local time zone of a custom date time.
+        /// </summary>
+        /// <returns>TimeZoneStructure</returns>
+        public TimeZoneRecord GetTimeZone(DateTime SourceDateTime)
+        {
+            TimeZoneRecord TZs = new();
+
+            TimeZoneInfo tzi = TimeZoneInfo.Local;
+            TZs.Identifier = tzi.Id;
+            TZs.StandardName = tzi.StandardName;
+            TZs.DisplayName = tzi.DisplayName;
+            TZs.UtcOffset = (int)tzi.GetUtcOffset(SourceDateTime).TotalMinutes;
+            TZs.SupportsDaylightSaving = tzi.SupportsDaylightSavingTime;
+            TZs.IsDaylightSaving = tzi.IsDaylightSavingTime(SourceDateTime);
+
+            return TZs;
+        }
        
 
         public List<TimeZoneRecord> GetSystemTimeZones()
