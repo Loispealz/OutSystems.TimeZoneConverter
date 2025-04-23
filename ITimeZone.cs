@@ -15,6 +15,7 @@ namespace TimeZone
         public TimeZoneRecord GetIANATimeZone(string ssIANATimezone);
         public DateTime ConvertToUTC(DateTime SourceDateTime, string SourceTimeZone);
         public TimeZoneRecord GetCurrentTimeZone();
+        public TimeZoneRecord GetTimeZone(DateTime SourceDateTime);
         public DateTime ConvertFromTimeZone(DateTime SourceDateTime, string SourceTimeZone, string DestinationTimeZone);
         public DateTime ConvertFromUTC(DateTime DateTimeUTC, string TimeZone);
         public List<TimeZoneRecord> GetSystemTimeZones();
